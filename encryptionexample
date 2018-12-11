@@ -1,0 +1,80 @@
+package com.cg.encryption;
+
+public class Encryption1 {
+
+	public static void main(String[] args) {
+		//ENCRYPTION
+		String s="QWERTY^&896";
+		char[] c=s.toCharArray();
+		StringBuffer buffer=new StringBuffer();
+		for (char d : c) {
+			
+			int c1=(int)d;
+			buffer.append(Integer.toHexString(c1+1));
+			//buffer.append(c1+1);
+		}
+		System.out.println("hex value="+buffer.toString());
+		
+		//DECRYPTION
+		StringBuffer buffer2=new StringBuffer();
+		String s1="52584653555a5f27393a37";
+		for (int i = 0; i < s1.length() - 1; i += 2) {
+
+			String j = s1.substring(i, (i + 2));
+			int d1 = Integer.parseInt(j, 16);
+			buffer2.append((char)(d1-1));
+						
+		}
+		System.out.println("string for hex="+buffer2.toString());
+	}
+
+}
+//5470786b626f7a6241323334
+//84112120107981111229865505152
+
+
+
+
+
+
+package com.cg.encryption;
+
+public class Encryption {
+	public static void main(String[] args) {
+		
+		String string = "fgdfg@123";
+		int len=string.length();
+		String s1=string.concat("ABCD");
+		char[] c = s1.toCharArray();
+		
+		StringBuffer buffer = new StringBuffer();
+		
+		StringBuffer buffer1 = new StringBuffer();
+		StringBuffer s=null;
+		
+		//ENCRYPTION
+		for (char d : c) {
+
+			buffer.append(Integer.toHexString(d));
+		}
+		System.out.println("hex:" + buffer.toString());
+
+		//DECRYPTION
+		String hex = "66676466674031323341424344";
+		for (int i = 0; i < hex.length() - 1; i += 2) {
+
+			String j = hex.substring(i, (i + 2));
+			int d1 = Integer.parseInt(j, 16);
+			s = buffer1.append((char) d1);
+						
+		}
+		System.out.println(s.toString());
+
+		System.out.println("string:" + buffer1.toString());
+		
+		
+		String original=buffer1.toString();
+		
+		System.out.println(original.substring(0, len));
+	}
+}
